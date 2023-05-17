@@ -5,7 +5,7 @@ import { sendUserAuthRequest } from "../../api-helpers/api-helpers";
 const Auth = () => {
   const getData = (data) => {
     console.log("Auth", data);
-    sendUserAuthRequest(data.signup)
+    sendUserAuthRequest(data, data.signup)
       .then((res) => {
         console.log(res);
         // Handle the response here

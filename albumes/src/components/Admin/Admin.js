@@ -1,10 +1,11 @@
 import React from "react";
 import AuthForm from "../Auth/AuthForm";
+import { useDispatch } from "../../api-helpers/api-helpers";
 
 const Admin = () => {
+  const dispatch = useDispatch();
   const getData = (data) => {
     console.log("Admin", data);
-    console.log("dsgsgsrg");
   };
 
   return (

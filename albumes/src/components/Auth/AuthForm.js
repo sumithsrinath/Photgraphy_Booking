@@ -18,6 +18,7 @@ const AuthForm = ({ onSubmit, isAdmin }) => {
     email: "",
     password: "",
   });
+
   const [isSignup, setIsSignup] = useState(false);
   const handleChange = (e) => {
     setInputs((prevState) => ({
@@ -28,6 +29,7 @@ const AuthForm = ({ onSubmit, isAdmin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ inputs, signup: isAdmin ? false : isSignup });
+    // console.log("afhafuwqehf");
   };
   return (
     <Dialog PaperProps={{ style: { borderRadius: 20 } }} open={true}>
@@ -82,13 +84,18 @@ const AuthForm = ({ onSubmit, isAdmin }) => {
             name="password"
           />
           <Button
-            sx={{ mt: 2, borderRadius: 10, bgcolor: "#2b2d42" }}
+            sx={{
+              marginTop: 2,
+              borderRadius: 10,
+              bgcolor: "#2b2d42",
+            }}
             type="submit"
             fullWidth
             variant="contained"
           >
-            {isSignup ? "Signup" : "Login"}
+            Submit
           </Button>
+
           {!isAdmin && (
             <Button
               onClick={() => setIsSignup(!isSignup)}

@@ -15,18 +15,24 @@ export const getAllAlbums = async () => {
 };
 
 export const sendUserAuthRequest = async (data, signup) => {
-  const res = await axios
-    .post(`/user/${signup ? "signup" : "login"}`, {
-      name: signup ? data.name : "",
-      email: data.email,
-      password: data.password,
+  return await axios
+    .get(`/user/login`, {
+      params: {
+        name: signup ? data.inputs.name : "",
+        email: data.inputs.email,
+        password: data.inputs.password,
+      },
     })
-    .catch((err) => console.log(err));
+    .then((res) => {
+      if (res.status !== 200) {
+        return "No data";
+      }
 
-  if (res.status !== 200 && res.status !== 201) {
-    console.log("Unexpected Error Occurred");
-  }
+      const data = res.data;
 
-  const resData = await res.data;
-  return resData;
+      return data;
+    })
+    .catch((err) => {
+      return err;
+    });
 };
